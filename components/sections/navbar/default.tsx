@@ -4,7 +4,7 @@ import { ReactNode } from "react";
 
 import { cn } from "@/lib/utils";
 
-import LaunchUI from "../../logos/launch-ui";
+import TarsLogo from "../../logos/tarsLogo";
 import { Button, type ButtonProps } from "../../ui/button";
 import {
   Navbar as NavbarComponent,
@@ -40,16 +40,24 @@ interface NavbarProps {
 }
 
 export default function Navbar({
-  logo = <LaunchUI />,
-  name = "Launch UI",
-  homeUrl = "https://www.launchuicomponents.com/",
+  logo = <TarsLogo />,
+  name = "TARS",
+  homeUrl = "https://tarsdevs.tech/",
   mobileLinks = [
-    { text: "Getting Started", href: "https://www.launchuicomponents.com/" },
-    { text: "Components", href: "https://www.launchuicomponents.com/" },
-    { text: "Documentation", href: "https://www.launchuicomponents.com/" },
+    { text: "Getting Started",
+      href: "https://www.launchuicomponents.com/"
+    },
+    { text: "Components",
+      href: "https://www.launchuicomponents.com/"
+    },
+    { text: "Documentation",
+      href: "https://www.launchuicomponents.com/"
+    },
   ],
   actions = [
-    { text: "Sign in", href: "https://www.launchuicomponents.com/", isButton: false },
+    { text: "Sign in",
+      href: "https://www.launchuicomponents.com/",
+      isButton: false },
     {
       text: "Get Started",
       href: "https://www.launchuicomponents.com/",
@@ -64,7 +72,7 @@ export default function Navbar({
   return (
     <header className={cn("sticky top-0 z-50 -mb-4 px-4 pb-4", className)}>
       <div className="fade-bottom bg-background/15 absolute left-0 h-24 w-full backdrop-blur-lg"></div>
-      <div className="max-w-container relative mx-auto">
+      <div className="relative mx-auto">
         <NavbarComponent>
           <NavbarLeft>
             {homeUrl.startsWith("/") ? (
@@ -73,7 +81,7 @@ export default function Navbar({
                 {name}
               </Link>
             ) : (
-              <a href={homeUrl} className="flex items-center gap-2 text-xl font-bold">
+              <a href={homeUrl} className="flex items-center gap-1 text-xl font-bold">
                 {logo}
                 {name}
               </a>
