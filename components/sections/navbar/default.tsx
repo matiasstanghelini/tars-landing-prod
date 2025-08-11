@@ -1,4 +1,9 @@
 import { Menu } from "lucide-react";
+import { Outfit } from "next/font/google";
+const outfit = Outfit({
+  subsets: ["latin"],
+  weight: "900",
+});
 import Link from "next/link";
 import { ReactNode } from "react";
 
@@ -78,12 +83,12 @@ export default function Navbar({
             {homeUrl.startsWith("/") ? (
               <Link href={homeUrl} className="flex items-center gap-2 text-xl font-bold">
                 {logo}
-                {name}
+                <span className={outfit.className}>{name}</span>
               </Link>
             ) : (
-              <a href={homeUrl} className="flex items-center gap-1 text-xl font-bold">
+              <a href={homeUrl} className="flex items-center gap-1 text-xl">
                 {logo}
-                {name}
+                <span className={outfit.className}>{name}</span>
               </a>
             )}
             {showNavigation && (customNavigation || <Navigation />)}

@@ -10,7 +10,7 @@ interface TarsLogoProps {
 
 export default function TarsLogo({
   className,
-  size = 30,
+  size = 40,
 }: TarsLogoProps) {
   return (
     <div className={cn("flex items-center", className)}>
