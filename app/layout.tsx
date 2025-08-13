@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Tars Tech - Soluciones digitales para pequeños y medianos negocios",
+  title: "Tars Tech - Soluciones digitales para pequeños y medianos comercios",
   description: "Tars Tech es una plataforma para construir y desplegar aplicaciones de comercio electrónico.",
 };
 
