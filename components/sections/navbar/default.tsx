@@ -1,23 +1,26 @@
-import { Menu } from "lucide-react";
-import { Outfit } from "next/font/google";
-const outfit = Outfit({
-  subsets: ["latin"],
-  weight: "900",
-});
-import Link from "next/link";
-import { ReactNode } from "react";
+"use client";
 
 import { cn } from "@/lib/utils";
-
+import { Menu } from "lucide-react";
+import { Outfit } from "next/font/google";
+import Link from "next/link";
+import { ReactNode } from "react";
 import TarsLogo from "../../logos/tarsLogo";
 import { Button, type ButtonProps } from "../../ui/button";
+import Navigation from "../../ui/navigation";
+import { Sheet, SheetContent, SheetTrigger } from "../../ui/sheet";
+import { ThemeToggle } from "@/components/theme/theme-toggle";
+
 import {
   Navbar as NavbarComponent,
   NavbarLeft,
   NavbarRight,
 } from "../../ui/navbar";
-import Navigation from "../../ui/navigation";
-import { Sheet, SheetContent, SheetTrigger } from "../../ui/sheet";
+
+const outfit = Outfit({
+  subsets: ["latin"],
+  weight: "900",
+});
 
 interface NavbarLink {
   text: string;
@@ -60,20 +63,24 @@ export default function Navbar({
     },
   ],
   actions = [
-    { text: "Sign in",
-      href: "https://www.launchuicomponents.com/",
-      isButton: false },
+    // { text: "Sign in",
+    //   href: "https://www.launchuicomponents.com/",
+    //   isButton: false,
+    //   variant: "secondary"
+    // },
     {
-      text: "Get Started",
-      href: "https://www.launchuicomponents.com/",
+      text: "Contactanos",
+      href: "https://tarsdevs.tech/",
       isButton: true,
-      variant: "ghost",
+      variant: "default",
     },
   ],
   showNavigation = true,
   customNavigation,
   className,
 }: NavbarProps) {
+  // Dark mode state is now managed by ThemeToggle component
+
   return (
     <header className={cn("sticky top-0 z-50 -mb-4 px-4 pb-4", className)}>
       <div className="fade-bottom bg-background/15 absolute left-0 h-24 w-full backdrop-blur-lg"></div>
@@ -91,31 +98,36 @@ export default function Navbar({
                 <span className={outfit.className}>{name}</span>
               </a>
             )}
-            {showNavigation && (customNavigation || <Navigation />)}
+            {showNavigation && (
+              <div className="ml-8">
+                {customNavigation || <Navigation />}
+              </div>
+            )}
           </NavbarLeft>
           <NavbarRight>
             {actions.map((action, index) => {
               if (action.isButton) {
                 return (
-                  <Button
-                    key={index}
-                    variant={action.variant || "default"}
-                    asChild
-                  >
-                    {action.href.startsWith("/") ? (
-                      <Link href={action.href}>
-                        {action.icon}
-                        {action.text}
-                        {action.iconRight}
-                      </Link>
-                    ) : (
-                      <a href={action.href}>
-                        {action.icon}
-                        {action.text}
-                        {action.iconRight}
-                      </a>
-                    )}
-                  </Button>
+                  <div key={index} className="flex items-center gap-2">
+                    <Button
+                      variant={action.variant || "default"}
+                      asChild
+                    >
+                      {action.href.startsWith("/") ? (
+                        <Link href={action.href}>
+                          {action.icon}
+                          {action.text}
+                          {action.iconRight}
+                        </Link>
+                      ) : (
+                        <a href={action.href}>
+                          {action.icon}
+                          {action.text}
+                          {action.iconRight}
+                        </a>
+                      )}
+                    </Button>
+                  </div>
                 );
               } else {
                 return action.href.startsWith("/") ? (
@@ -137,6 +149,7 @@ export default function Navbar({
                 );
               }
             })}
+            <ThemeToggle />
             <Sheet>
               <SheetTrigger asChild>
                 <Button

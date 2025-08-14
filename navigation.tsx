@@ -3,8 +3,10 @@
 import Link from "next/link";
 import * as React from "react";
 import { ReactNode } from "react";
+
 import { cn } from "@/lib/utils";
-import TarsLogo from "../logos/tarsLogo";
+
+import TarsLogo from "@/components/logos/tarsLogo";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -13,21 +15,19 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "./navigation-menu";
+} from "@/components/ui/navigation-menu";
 
 interface ComponentItem {
   title: string;
   href: string;
   description: string;
-  category: string; // categoría para filtrar
 }
 
 interface MenuItem {
   title: string;
   href?: string;
   isLink?: boolean;
-  category?: string; // categoría que se usará para filtrar
-  content?: ReactNode | string;
+  content?: ReactNode;
 }
 
 interface NavigationProps {
@@ -46,37 +46,115 @@ interface NavigationProps {
 
 export default function Navigation({
   menuItems = [
-    { title: "Introducción", content: "default" },
-    { title: "Soluciones", category: "solutions" },
-    { title: "Industrias", category: "industries" },
-    { title: "Recursos", category: "resources" },
+    {
+      title: "Introducción",
+      content: "default",
+    },
+    {
+      title: "Soluciones",
+      content: "components",
+    },
+    {
+      title: "Recursos",
+      content: "components",
+    },
+    {
+      title: "Sobre Nosotros",
+      isLink: true,
+      href: "/sobre-nosotros",
+    },
+    {
+      title: "Documentation",
+      isLink: true,
+      href: "https://www.launchuicomponents.com/",
+    },
   ],
   components = [
     // Soluciones
-    { title: "Plataforma E-commerce", href: "/solutions/platforma-ecommerce", description: "Solución integral para crear y gestionar tu tienda online.", category: "solutions" },
-    { title: "Creación de Tiendas", href: "/solutions/creacion-de-tiendas", description: "Creamos el contenido de tu tienda de forma sencilla.", category: "solutions" },
-    { title: "Analíticas", href: "/solutions/analiticas", description: "Obtén reportes y métricas avanzadas de tu negocio.", category: "solutions" },
-    { title: "MVP de E-commerce", href: "/solutions/mvp-ecommerce", description: "Solución para crear un MVP de e-commerce en el menor tiempo posible.", category: "solutions" },
-    { title: "AI Chatbots para E-commerce", href: "/solutions/ai-chatbot", description: "Solución para crear chatbots para e-commerce.", category: "solutions" },
+    {
+      title: "Plataforma E-commerce",
+      href: "/soluciones/plataforma-ecommerce",
+      description: "Solución integral para crear y gestionar tu tienda online."
+    },
+    {
+      title: "Marketplace",
+      href: "/soluciones/marketplace",
+      description: "Crea tu propio marketplace y conecta múltiples vendedores."
+    },
+    {
+      title: "Gestor de Contenidos",
+      href: "/soluciones/gestor-de-contenidos",
+      description: "Administra el contenido de tu tienda de forma sencilla."
+    },
+    {
+      title: "Analíticas",
+      href: "/soluciones/analiticas",
+      description: "Obtén reportes y métricas avanzadas de tu negocio."
+    },
     // Industrias
-    { title: "Retail", href: "/industrias/retail", description: "Soluciones para el sector retail.", category: "industries" },
-    { title: "Moda", href: "/industrias/moda", description: "E-commerce especializado en moda.", category: "industries" },
-    { title: "Bienes de Consumo", href: "/industrias/bienes-de-consumo", description: "Gestión para empresas de bienes de consumo.", category: "industries" },
-    { title: "Manufactura", href: "/industrias/manufactura", description: "Soluciones para el sector manufacturero.", category: "industries" },
-    // Recursos
-    { title: "Blog", href: "/resources/blog", description: "Artículos y novedades del sector.", category: "resources" },
-    { title: "Casos de Estudio", href: "/resources/casos-de-estudio", description: "Historias de éxito y casos prácticos.", category: "resources" },
-    { title: "Documentación", href: "/resources/documentacion", description: "Guías de uso y documentación técnica.", category: "resources" },
-    { title: "Sobre Nosotros", href: "/resources/sobre-nosotros", description: "Conoce más sobre nosotros.", category: "resources" },
+    {
+      title: "Retail",
+      href: "/industrias/retail",
+      description: "Soluciones para el sector retail."
+    },
+    {
+      title: "Moda",
+      href: "/industrias/moda",
+      description: "E-commerce especializado en moda."
+    },
+    {
+      title: "Bienes de Consumo",
+      href: "/industrias/bienes-de-consumo",
+      description: "Gestión para empresas de bienes de consumo."
+    },
+    {
+      title: "Manufactura",
+      href: "/industrias/manufactura",
+      description: "Soluciones para el sector manufacturero."
+    },
+    // Recursos agrupados
+    {
+      title: "Recursos",
+      href: "/recursos",
+      description: "Accede a blog, casos de estudio y documentación."
+    },
+    // Otros
+    {
+      title: "Sobre Nosotros",
+      href: "/sobre-nosotros",
+      description: "Conoce más sobre nuestro equipo y misión."
+    },
+    {
+      title: "Contacto",
+      href: "/contacto",
+      description: "Contáctanos para más información."
+    },
+    {
+      title: "Demo",
+      href: "/demo",
+      description: "Solicita una demostración personalizada."
+    },
   ],
   logo = <TarsLogo />,
   logoTitle = "TARS",
   logoDescription = "Soluciones de ecommerce para potenciar tu negocio, proveemos soluciones personalizadas para cada cliente, tanto para grandes empresas como para pequeños emprendedores.",
-  logoHref = "/",
+  logoHref = "https://www.launchuicomponents.com/",
   introItems = [
-    { title: "Plataforma E-commerce", href: "/solutions/platforma-ecommerce", description: "Solución integral para crear y gestionar tu tienda online." },
-    { title: "Creación de Tiendas", href: "/solutions/creacion-de-tiendas", description: "Creamos el contenido de tu tienda de forma sencilla." },
-    { title: "Analíticas", href: "/solutions/analiticas", description: "Obtén reportes y métricas avanzadas de tu negocio." },
+   {
+      title: "Plataforma E-commerce",
+      href: "/soluciones/plataforma-ecommerce",
+      description: "Solución integral para crear y gestionar tu tienda online."
+    },
+     {
+      title: "Contenido",
+      href: "/soluciones/gestor-de-contenidos",
+      description: "Administra el contenido de tu tienda de forma sencilla."
+    },
+    {
+      title: "Analíticas",
+      href: "/soluciones/analiticas",
+      description: "Obtén reportes y métricas avanzadas de tu negocio."
+    },
   ],
 }: NavigationProps) {
   return (
@@ -116,19 +194,17 @@ export default function Navigation({
                         </ListItem>
                       ))}
                     </ul>
-                  ) : item.category ? (
+                  ) : item.content === "components" ? (
                     <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                      {components
-                        .filter(c => c.category === item.category)
-                        .map(component => (
-                          <ListItem
-                            key={component.title}
-                            title={component.title}
-                            href={component.href}
-                          >
-                            {component.description}
-                          </ListItem>
-                        ))}
+                      {components.map((component) => (
+                        <ListItem
+                          key={component.title}
+                          title={component.title}
+                          href={component.href}
+                        >
+                          {component.description}
+                        </ListItem>
+                      ))}
                     </ul>
                   ) : (
                     item.content
