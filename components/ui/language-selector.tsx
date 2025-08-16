@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Check, Globe, ChevronDown } from "lucide-react";
@@ -17,7 +18,7 @@ const languages = [
 ];
 
 export default function LanguageSelector({ className }: { className?: string }) {
-  const { locale, changeLanguage, t } = useTranslation();
+  const { locale, changeLanguage, t, isLoading } = useTranslation();
 
   const currentLanguage = languages.find(lang => lang.code === locale) || languages[0];
 
@@ -28,11 +29,12 @@ export default function LanguageSelector({ className }: { className?: string }) 
           variant="ghost"
           size="sm"
           className={cn("gap-2", className)}
-          aria-label={t('language.select_language')}
+          aria-label="Select language"
+          disabled={isLoading}
         >
           <Globe className="h-4 w-4" />
           <span className="hidden sm:inline">{currentLanguage.name}</span>
-          <ChevronDown className="h-3 w-3" />
+          <ChevronDown className={cn("h-3 w-3 transition-transform", isLoading && "animate-spin")} />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
@@ -41,6 +43,7 @@ export default function LanguageSelector({ className }: { className?: string }) 
             key={language.code}
             onClick={() => changeLanguage(language.code)}
             className="gap-2"
+            disabled={isLoading}
           >
             <span>{language.flag}</span>
             <span>{language.name}</span>

@@ -37,5 +37,25 @@
     "spanish": "Español",
     "english": "English",
     "select_language": "Select language"
+  },
+  "blog": {
+    "title": "Blog",
+    "description": "Latest news and updates"
+  },
+  "case_studies": {
+    "title": "Case Studies",
+    "description": "Success stories from our clients"
+  },
+  "about_us": {
+    "title": "About Us",
+    "description": "Learn about our team and mission"
+  },
+  "contact": {
+    "title": "Contact",
+    "description": "Get in touch with us"
+  },
+  "demo": {
+    "title": "Demo",
+    "description": "Try our solutions in action"
   }
 }

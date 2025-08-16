@@ -37,5 +37,25 @@
     "spanish": "Español",
     "english": "English",
     "select_language": "Seleccionar idioma"
+  },
+  "blog": {
+    "title": "Blog",
+    "description": "Últimas noticias y actualizaciones"
+  },
+  "case_studies": {
+    "title": "Casos de Estudio",
+    "description": "Historias de éxito de nuestros clientes"
+  },
+  "about_us": {
+    "title": "Sobre Nosotros",
+    "description": "Conoce nuestro equipo y nuestra misión"
+  },
+  "contact": {
+    "title": "Contacto",
+    "description": "Ponte en contacto con nosotros"
+  },
+  "demo": {
+    "title": "Demo",
+    "description": "Prueba nuestras soluciones en acción"
   }
 }

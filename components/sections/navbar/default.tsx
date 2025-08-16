@@ -97,8 +97,10 @@ export default function Navbar({
         <NavbarComponent>
           <NavbarLeft>
             <Link href={homeUrl} className="flex items-center gap-2 text-xl font-bold">
-              {logo}
-              <span className={outfit.className}>{name}</span>
+              <span className="flex items-center gap-2">
+                {logo}
+                <span className={outfit.className}>{name}</span>
+              </span>
             </Link>
             {showNavigation && (
               <div className="ml-8 hidden md:block">
@@ -112,17 +114,16 @@ export default function Navbar({
               <LanguageSelector />
               <ThemeToggle />
               {finalActions.map((action, index) => (
-                <Button
+                <Link
                   key={index}
-                  variant={action.variant || "default"}
-                  asChild
+                  href={action.href}
                 >
-                  <Link href={action.href}>
+                  <Button variant={action.variant || "default"}>
                     {action.icon}
                     {action.text}
                     {action.iconRight}
-                  </Link>
-                </Button>
+                  </Button>
+                </Link>
               ))}
             </div>
 

@@ -2,12 +2,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Disable Turbopack to avoid symlink issues in Replit
-  experimental: {
-    turbo: {
-      rules: {},
-    },
-  },
+  // Configure Turbopack (now stable in Next.js 15)
+  turbo: {},
   // Configure allowed dev origins for Replit
   allowedDevOrigins: [
     '*.replit.dev',

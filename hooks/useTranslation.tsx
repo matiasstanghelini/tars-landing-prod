@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
@@ -6,10 +7,20 @@ type TranslationKeys = {
   [key: string]: string | TranslationKeys;
 };
 
+// Pre-load translations to avoid async loading delays
+const translations: Record<string, TranslationKeys> = {};
+
+// Load Spanish translations
+import esTranslations from '@/locales/es/common.json';
+translations['es'] = esTranslations;
+
+// Load English translations
+import enTranslations from '@/locales/en/common.json';
+translations['en'] = enTranslations;
+
 export function useTranslation() {
-  const [translations, setTranslations] = useState<TranslationKeys>({});
-  const [isLoading, setIsLoading] = useState(true);
   const [locale, setLocale] = useState('es');
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     // Get locale from localStorage or default to 'es'
@@ -19,32 +30,10 @@ export function useTranslation() {
     }
   }, []);
 
-  useEffect(() => {
-    const loadTranslations = async () => {
-      setIsLoading(true);
-      try {
-        // Import translations directly instead of fetching
-        let translationsData;
-        if (locale === 'en') {
-          translationsData = await import('@/locales/en/common.json');
-        } else {
-          translationsData = await import('@/locales/es/common.json');
-        }
-        setTranslations(translationsData.default || translationsData);
-      } catch (error) {
-        console.error('Error loading translations:', error);
-        setTranslations({});
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    loadTranslations();
-  }, [locale]);
-
   const t = useCallback((key: string): string => {
+    const currentTranslations = translations[locale] || translations['es'];
     const keys = key.split('.');
-    let value: any = translations;
+    let value: any = currentTranslations;
 
     for (const k of keys) {
       if (value && typeof value === 'object' && k in value) {
@@ -55,15 +44,16 @@ export function useTranslation() {
     }
 
     return typeof value === 'string' ? value : key;
-  }, [translations]);
+  }, [locale]);
 
   const changeLanguage = useCallback((newLocale: string) => {
+    setIsLoading(true);
     setLocale(newLocale);
     if (typeof window !== 'undefined') {
       localStorage.setItem('locale', newLocale);
     }
-    // Force re-render instead of reload
-    window.location.reload();
+    // Small delay to show the change is happening, then remove loading
+    setTimeout(() => setIsLoading(false), 100);
   }, []);
 
   return {
