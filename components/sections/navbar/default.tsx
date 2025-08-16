@@ -50,7 +50,7 @@ interface NavbarProps {
 export default function Navbar({
   logo = <TarsLogo />,
   name = "TARS",
-  homeUrl = "https://tarsdevs.tech/",
+  homeUrl = "/",
   mobileLinks = [
     { text: "Getting Started",
       href: "https://www.launchuicomponents.com/"
@@ -93,7 +93,7 @@ export default function Navbar({
                 <span className={outfit.className}>{name}</span>
               </Link>
             ) : (
-              <a href={homeUrl} className="flex items-center gap-1 text-xl">
+              <a href={homeUrl} className="flex items-center gap-2 text-xl font-bold">
                 {logo}
                 <span className={outfit.className}>{name}</span>
               </a>
