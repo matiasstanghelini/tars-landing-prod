@@ -1,22 +1,22 @@
 
 "use client";
 
-import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useState, useEffect, useCallback } from "react";
 
 type TranslationKeys = {
   [key: string]: string | TranslationKeys;
 };
 
 export function useTranslation() {
-  const router = useRouter();
   const [translations, setTranslations] = useState<TranslationKeys>({});
   const [isLoading, setIsLoading] = useState(true);
   const [locale, setLocale] = useState('es');
 
   useEffect(() => {
     // Get locale from localStorage or default to 'es'
-    const savedLocale = localStorage.getItem('locale') || 'es';
+    const savedLocale = typeof window !== 'undefined' 
+      ? localStorage.getItem('locale') || 'es' 
+      : 'es';
     setLocale(savedLocale);
   }, []);
 
@@ -24,14 +24,24 @@ export function useTranslation() {
     const loadTranslations = async () => {
       try {
         setIsLoading(true);
-        const response = await import(`../locales/${locale}/common.json`);
-        setTranslations(response.default);
+        const response = await fetch(`/locales/${locale}/common.json`);
+        if (response.ok) {
+          const data = await response.json();
+          setTranslations(data);
+        }
       } catch (error) {
-        console.error(`Failed to load translations for locale: ${locale}`, error);
-        // Fallback to Spanish if translation fails
+        console.error('Error loading translations:', error);
+        // Fallback to Spanish if loading fails
         if (locale !== 'es') {
-          const fallback = await import(`../locales/es/common.json`);
-          setTranslations(fallback.default);
+          try {
+            const fallbackResponse = await fetch('/locales/es/common.json');
+            if (fallbackResponse.ok) {
+              const fallbackData = await fallbackResponse.json();
+              setTranslations(fallbackData);
+            }
+          } catch (fallbackError) {
+            console.error('Error loading fallback translations:', fallbackError);
+          }
         }
       } finally {
         setIsLoading(false);
@@ -41,7 +51,7 @@ export function useTranslation() {
     loadTranslations();
   }, [locale]);
 
-  const t = (key: string): string => {
+  const t = useCallback((key: string): string => {
     const keys = key.split('.');
     let value: any = translations;
     
@@ -54,18 +64,19 @@ export function useTranslation() {
     }
     
     return typeof value === 'string' ? value : key;
-  };
+  }, [translations]);
 
-  const changeLanguage = (newLocale: string) => {
+  const changeLanguage = useCallback((newLocale: string) => {
     setLocale(newLocale);
-    localStorage.setItem('locale', newLocale);
-    window.location.reload(); // Simple reload to apply new language
-  };
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('locale', newLocale);
+    }
+  }, []);
 
   return {
     t,
     locale,
+    isLoading,
     changeLanguage,
-    isLoading
   };
 }
