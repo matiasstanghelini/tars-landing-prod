@@ -10,7 +10,8 @@ import { Button, type ButtonProps } from "../../ui/button";
 import Navigation from "../../ui/navigation";
 import { Sheet, SheetContent, SheetTrigger } from "../../ui/sheet";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
-import LanguageSelector from "@/components/language-selector/LanguageSelector"; // Assuming LanguageSelector is in this path
+import LanguageSelector from "@/components/ui/language-selector";
+import { useTranslation } from "@/hooks/useTranslation";
 
 import {
   Navbar as NavbarComponent,

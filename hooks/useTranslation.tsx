@@ -1,8 +1,8 @@
 
 "use client";
 
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 type TranslationKeys = {
   [key: string]: string | TranslationKeys;
@@ -12,8 +12,13 @@ export function useTranslation() {
   const router = useRouter();
   const [translations, setTranslations] = useState<TranslationKeys>({});
   const [isLoading, setIsLoading] = useState(true);
+  const [locale, setLocale] = useState('es');
 
-  const locale = router.locale || 'es';
+  useEffect(() => {
+    // Get locale from localStorage or default to 'es'
+    const savedLocale = localStorage.getItem('locale') || 'es';
+    setLocale(savedLocale);
+  }, []);
 
   useEffect(() => {
     const loadTranslations = async () => {
@@ -52,7 +57,9 @@ export function useTranslation() {
   };
 
   const changeLanguage = (newLocale: string) => {
-    router.push(router.asPath, router.asPath, { locale: newLocale });
+    setLocale(newLocale);
+    localStorage.setItem('locale', newLocale);
+    window.location.reload(); // Simple reload to apply new language
   };
 
   return {

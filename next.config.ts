@@ -14,12 +14,6 @@ const nextConfig: NextConfig = {
   ],
   // Enable standalone output for better Replit compatibility
   output: 'standalone',
-  // i18n configuration
-  i18n: {
-    locales: ['es', 'en'],
-    defaultLocale: 'es',
-    localeDetection: true,
-  },
 };
 
 export default nextConfig;
