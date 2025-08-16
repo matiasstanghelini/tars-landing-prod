@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
@@ -14,35 +13,27 @@ export function useTranslation() {
 
   useEffect(() => {
     // Get locale from localStorage or default to 'es'
-    const savedLocale = typeof window !== 'undefined' 
-      ? localStorage.getItem('locale') || 'es' 
-      : 'es';
-    setLocale(savedLocale);
+    if (typeof window !== 'undefined') {
+      const savedLocale = localStorage.getItem('locale') || 'es';
+      setLocale(savedLocale);
+    }
   }, []);
 
   useEffect(() => {
     const loadTranslations = async () => {
+      setIsLoading(true);
       try {
-        setIsLoading(true);
-        const response = await fetch(`/locales/${locale}/common.json`);
-        if (response.ok) {
-          const data = await response.json();
-          setTranslations(data);
+        // Import translations directly instead of fetching
+        let translationsData;
+        if (locale === 'en') {
+          translationsData = await import('@/locales/en/common.json');
+        } else {
+          translationsData = await import('@/locales/es/common.json');
         }
+        setTranslations(translationsData.default || translationsData);
       } catch (error) {
         console.error('Error loading translations:', error);
-        // Fallback to Spanish if loading fails
-        if (locale !== 'es') {
-          try {
-            const fallbackResponse = await fetch('/locales/es/common.json');
-            if (fallbackResponse.ok) {
-              const fallbackData = await fallbackResponse.json();
-              setTranslations(fallbackData);
-            }
-          } catch (fallbackError) {
-            console.error('Error loading fallback translations:', fallbackError);
-          }
-        }
+        setTranslations({});
       } finally {
         setIsLoading(false);
       }
@@ -54,7 +45,7 @@ export function useTranslation() {
   const t = useCallback((key: string): string => {
     const keys = key.split('.');
     let value: any = translations;
-    
+
     for (const k of keys) {
       if (value && typeof value === 'object' && k in value) {
         value = value[k];
@@ -62,7 +53,7 @@ export function useTranslation() {
         return key; // Return key if translation not found
       }
     }
-    
+
     return typeof value === 'string' ? value : key;
   }, [translations]);
 
@@ -71,6 +62,8 @@ export function useTranslation() {
     if (typeof window !== 'undefined') {
       localStorage.setItem('locale', newLocale);
     }
+    // Force re-render instead of reload
+    window.location.reload();
   }, []);
 
   return {

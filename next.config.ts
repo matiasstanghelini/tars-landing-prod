@@ -4,7 +4,9 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   // Disable Turbopack to avoid symlink issues in Replit
   experimental: {
-    turbo: false,
+    turbo: {
+      rules: {},
+    },
   },
   // Configure allowed dev origins for Replit
   allowedDevOrigins: [
