@@ -1,0 +1,41 @@
+
+{
+  "navbar": {
+    "solutions": "Soluciones",
+    "industries": "Industrias", 
+    "resources": "Recursos",
+    "blog": "Blog",
+    "case_studies": "Casos de Estudio",
+    "about_us": "Sobre Nosotros",
+    "contact": "Contactanos",
+    "demo": "Demo"
+  },
+  "solutions": {
+    "title": "Soluciones",
+    "description": "Descubre nuestras soluciones de ecommerce",
+    "ecommerce_platform": "Plataforma E-commerce",
+    "marketplace": "Marketplace",
+    "content_manager": "Gestor de Contenidos",
+    "analytics": "Analíticas"
+  },
+  "industries": {
+    "title": "Industrias",
+    "description": "Soluciones especializadas por sector",
+    "retail": "Retail",
+    "fashion": "Moda",
+    "consumer_goods": "Bienes de Consumo",
+    "manufacturing": "Manufactura"
+  },
+  "resources": {
+    "title": "Recursos",
+    "description": "Información y recursos útiles",
+    "blog": "Blog",
+    "case_studies": "Casos de Estudio",
+    "about_us": "Sobre Nosotros"
+  },
+  "language": {
+    "spanish": "Español",
+    "english": "English",
+    "select_language": "Seleccionar idioma"
+  }
+}

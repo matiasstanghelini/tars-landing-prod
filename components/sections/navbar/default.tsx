@@ -10,6 +10,7 @@ import { Button, type ButtonProps } from "../../ui/button";
 import Navigation from "../../ui/navigation";
 import { Sheet, SheetContent, SheetTrigger } from "../../ui/sheet";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
+import LanguageSelector from "@/components/language-selector/LanguageSelector"; // Assuming LanguageSelector is in this path
 
 import {
   Navbar as NavbarComponent,
@@ -51,32 +52,35 @@ export default function Navbar({
   logo = <TarsLogo />,
   name = "TARS",
   homeUrl = "/",
-  mobileLinks = [
-    { text: "Soluciones", href: "/solutions" },
-    { text: "Industrias", href: "/industrias" },
-    { text: "Recursos", href: "/resources" },
-    { text: "Blog", href: "/resources/blog" },
-    { text: "Casos de Estudio", href: "/resources/casos-de-estudio" },
-    { text: "Sobre Nosotros", href: "/resources/sobre-nosotros" },
-  ],
-  actions = [
-    // { text: "Sign in",
-    //   href: "https://www.launchuicomponents.com/",
-    //   isButton: false,
-    //   variant: "secondary"
-    // },
-    {
-      text: "Contactanos",
-      href: "/contacto",
-      isButton: true,
-      variant: "default",
-    },
-  ],
+  mobileLinks,
+  actions,
   showNavigation = true,
   customNavigation,
   className,
 }: NavbarProps) {
-  // Dark mode state is now managed by ThemeToggle component
+  const { t } = useTranslation(); // Assuming useTranslation is imported and available
+
+  // Use translations for mobile links if not provided
+  const defaultMobileLinks = [
+    { text: t('navbar.solutions'), href: "/solutions" },
+    { text: t('navbar.industries'), href: "/industrias" },
+    { text: t('navbar.resources'), href: "/resources" },
+    { text: t('navbar.blog'), href: "/resources/blog" },
+    { text: t('navbar.case_studies'), href: "/resources/casos-de-estudio" },
+    { text: t('navbar.about_us'), href: "/resources/sobre-nosotros" },
+  ];
+
+  const defaultActions = [
+    {
+      text: t('navbar.contact'),
+      href: "/contacto",
+      isButton: true,
+      variant: "default" as const,
+    },
+  ];
+
+  const finalMobileLinks = mobileLinks || defaultMobileLinks;
+  const finalActions = actions || defaultActions;
 
   return (
     <header className={cn("sticky top-0 z-50 -mb-4 px-4 pb-4", className)}>
@@ -102,51 +106,55 @@ export default function Navbar({
             )}
           </NavbarLeft>
           <NavbarRight>
-            {actions.map((action, index) => {
-              if (action.isButton) {
-                return (
-                  <div key={index} className="flex items-center gap-2">
-                    <Button
-                      variant={action.variant || "default"}
-                      asChild
-                    >
-                      {action.href.startsWith("/") ? (
-                        <Link href={action.href}>
-                          {action.icon}
-                          {action.text}
-                          {action.iconRight}
-                        </Link>
-                      ) : (
-                        <a href={action.href}>
-                          {action.icon}
-                          {action.text}
-                          {action.iconRight}
-                        </a>
-                      )}
-                    </Button>
-                  </div>
-                );
-              } else {
-                return action.href.startsWith("/") ? (
-                  <Link
-                    key={index}
-                    href={action.href}
-                    className="hidden text-sm md:block"
-                  >
-                    {action.text}
-                  </Link>
-                ) : (
-                  <a
-                    key={index}
-                    href={action.href}
-                    className="hidden text-sm md:block"
-                  >
-                    {action.text}
-                  </a>
-                );
-              }
-            })}
+            <Navigation />
+            <LanguageSelector />
             <ThemeToggle />
+            <div className="flex items-center gap-2">
+              {finalActions.map((action, index) => {
+                if (action.isButton) {
+                  return (
+                    <div key={index} className="flex items-center gap-2">
+                      <Button
+                        variant={action.variant || "default"}
+                        asChild
+                      >
+                        {action.href.startsWith("/") ? (
+                          <Link href={action.href}>
+                            {action.icon}
+                            {action.text}
+                            {action.iconRight}
+                          </Link>
+                        ) : (
+                          <a href={action.href}>
+                            {action.icon}
+                            {action.text}
+                            {action.iconRight}
+                          </a>
+                        )}
+                      </Button>
+                    </div>
+                  );
+                } else {
+                  return action.href.startsWith("/") ? (
+                    <Link
+                      key={index}
+                      href={action.href}
+                      className="hidden text-sm md:block"
+                    >
+                      {action.text}
+                    </Link>
+                  ) : (
+                    <a
+                      key={index}
+                      href={action.href}
+                      className="hidden text-sm md:block"
+                    >
+                      {action.text}
+                    </a>
+                  );
+                }
+              })}
+            </div>
             <Sheet>
               <SheetTrigger asChild>
                 <Button
@@ -169,7 +177,7 @@ export default function Navbar({
                       <span>{name}</span>
                     </a>
                   )}
-                  {mobileLinks.map((link, index) => (
+                  {finalMobileLinks.map((link, index) => (
                     link.href.startsWith("/") ? (
                       <Link
                         key={index}
