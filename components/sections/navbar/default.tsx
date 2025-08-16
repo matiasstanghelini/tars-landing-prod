@@ -50,17 +50,14 @@ interface NavbarProps {
 export default function Navbar({
   logo = <TarsLogo />,
   name = "TARS",
-  homeUrl = "https://tarsdevs.tech/",
+  homeUrl = "/",
   mobileLinks = [
-    { text: "Getting Started",
-      href: "https://www.launchuicomponents.com/"
-    },
-    { text: "Components",
-      href: "https://www.launchuicomponents.com/"
-    },
-    { text: "Documentation",
-      href: "https://www.launchuicomponents.com/"
-    },
+    { text: "Soluciones", href: "/solutions" },
+    { text: "Industrias", href: "/industrias" },
+    { text: "Recursos", href: "/resources" },
+    { text: "Blog", href: "/resources/blog" },
+    { text: "Casos de Estudio", href: "/resources/casos-de-estudio" },
+    { text: "Sobre Nosotros", href: "/resources/sobre-nosotros" },
   ],
   actions = [
     // { text: "Sign in",
@@ -70,7 +67,7 @@ export default function Navbar({
     // },
     {
       text: "Contactanos",
-      href: "https://tarsdevs.tech/",
+      href: "/contacto",
       isButton: true,
       variant: "default",
     },
