@@ -1,16 +1,17 @@
 
 "use client";
 
-import { Check, Globe, ChevronDown } from "lucide-react";
-import { useTranslation } from "@/hooks/useTranslation";
-import { Button } from "./button";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "./dropdown-menu";
+} from "@/components/ui/dropdown-menu";
+import { useTranslation } from "@/hooks/useTranslation";
+import { Check, ChevronDown, Globe } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useMemo } from "react";
 
 const languages = [
   { code: 'es', name: 'Español', flag: '🇪🇸' },
@@ -18,9 +19,12 @@ const languages = [
 ];
 
 export default function LanguageSelector({ className }: { className?: string }) {
-  const { locale, changeLanguage, t, isLoading } = useTranslation();
+  const { locale, changeLanguage, isLoading } = useTranslation();
 
-  const currentLanguage = languages.find(lang => lang.code === locale) || languages[0];
+  const currentLanguage = useMemo(() => 
+    languages.find(lang => lang.code === locale) || languages[0], 
+    [locale]
+  );
 
   return (
     <DropdownMenu>

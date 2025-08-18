@@ -1,9 +1,8 @@
-
 {
   "navbar": {
     "solutions": "Solutions",
     "industries": "Industries",
-    "resources": "Resources", 
+    "resources": "Resources",
     "blog": "Blog",
     "case_studies": "Case Studies",
     "about_us": "About Us",
@@ -12,25 +11,26 @@
   },
   "solutions": {
     "title": "Solutions",
-    "description": "Discover our ecommerce solutions",
-    "ecommerce_platform": "E-commerce Platform",
-    "marketplace": "Marketplace", 
+    "mvp": "MVP E-commerce",
+    "platform": "E-commerce Platform",
+    "analytics": "Analytics",
+    "store_creation": "Store Creation",
     "content_manager": "Content Manager",
-    "analytics": "Analytics"
+    "marketplace": "Marketplace",
+    "ai_chatbot": "AI Chatbot"
   },
   "industries": {
     "title": "Industries",
-    "description": "Specialized solutions by sector",
     "retail": "Retail",
     "fashion": "Fashion",
-    "consumer_goods": "Consumer Goods",
-    "manufacturing": "Manufacturing"
+    "manufacturing": "Manufacturing",
+    "consumer_goods": "Consumer Goods"
   },
   "resources": {
     "title": "Resources",
-    "description": "Useful information and resources",
     "blog": "Blog",
-    "case_studies": "Case Studies", 
+    "case_studies": "Case Studies",
+    "documentation": "Documentation",
     "about_us": "About Us"
   },
   "language": {

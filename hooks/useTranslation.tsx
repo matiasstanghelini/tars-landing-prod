@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 
 type TranslationKeys = {
   [key: string]: string | TranslationKeys;
@@ -26,7 +26,9 @@ export function useTranslation() {
     // Get locale from localStorage or default to 'es'
     if (typeof window !== 'undefined') {
       const savedLocale = localStorage.getItem('locale') || 'es';
-      setLocale(savedLocale);
+      if (savedLocale !== locale) {
+        setLocale(savedLocale);
+      }
     }
   }, []);
 
@@ -47,6 +49,8 @@ export function useTranslation() {
   }, [locale]);
 
   const changeLanguage = useCallback((newLocale: string) => {
+    if (newLocale === locale) return; // Avoid unnecessary updates
+    
     setIsLoading(true);
     setLocale(newLocale);
     if (typeof window !== 'undefined') {
@@ -54,12 +58,12 @@ export function useTranslation() {
     }
     // Small delay to show the change is happening, then remove loading
     setTimeout(() => setIsLoading(false), 100);
-  }, []);
+  }, [locale]);
 
-  return {
+  return useMemo(() => ({
     t,
     locale,
     isLoading,
     changeLanguage,
-  };
+  }), [t, locale, isLoading, changeLanguage]);
 }
