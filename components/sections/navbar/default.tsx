@@ -97,10 +97,8 @@ export default function Navbar({
         <NavbarComponent>
           <NavbarLeft>
             <Link href={homeUrl} className="flex items-center gap-2 text-xl font-bold hover:opacity-80 transition-opacity">
-              <span className="flex items-center gap-2">
-                {logo}
-                <span className={outfit.className}>{name}</span>
-              </span>
+              {logo}
+              <span className={outfit.className}>{name}</span>
             </Link>
             {showNavigation && (
               <div className="ml-8 hidden md:block">
