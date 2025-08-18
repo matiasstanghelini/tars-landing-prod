@@ -96,7 +96,7 @@ export default function Navigation({
                     <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                       <li className="row-span-3">
                         <NavigationMenuLink asChild>
-                          <Link
+                          <a
                             className="from-muted/30 to-muted/10 flex h-full w-full flex-col justify-end rounded-md bg-linear-to-b p-6 no-underline outline-hidden select-none focus:shadow-md"
                             href={logoHref}
                           >
@@ -107,7 +107,7 @@ export default function Navigation({
                             <p className="text-muted-foreground text-sm leading-tight">
                               {logoDescription}
                             </p>
-                          </Link>
+                          </a>
                         </NavigationMenuLink>
                       </li>
                       {introItems.map((intro, i) => (
