@@ -16,6 +16,7 @@ export default function TarsLogo({
   return (
     <div className={cn("flex items-center", className)}>
       <svg
+        fill="#B61860"
         height={size}
         width={size}
         version="1.1"
@@ -23,8 +24,8 @@ export default function TarsLogo({
         xmlns="http://www.w3.org/2000/svg"
         viewBox="-3.2 -3.2 38.40 38.40"
         xmlSpace="preserve"
+        stroke="#B61860"
         strokeWidth="0.00032"
-        className="fill-[#B61860] dark:fill-[#E879F9]"
       >
         <g id="SVGRepo_iconCarrier">
           <g>
