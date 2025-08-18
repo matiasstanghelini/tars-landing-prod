@@ -114,16 +114,17 @@ export default function Navbar({
               <LanguageSelector />
               <ThemeToggle />
               {finalActions.map((action, index) => (
-                <Link
+                <Button 
                   key={index}
-                  href={action.href}
+                  variant={action.variant || "default"}
+                  asChild
                 >
-                  <Button variant={action.variant || "default"}>
+                  <Link href={action.href}>
                     {action.icon}
                     {action.text}
                     {action.iconRight}
-                  </Button>
-                </Link>
+                  </Link>
+                </Button>
               ))}
             </div>
 

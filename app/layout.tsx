@@ -2,6 +2,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
+import Navbar from "@/components/sections/navbar/default";
 
 export const metadata: Metadata = {
   title: "Tars Tech - Soluciones digitales para pequeños y medianos comercios",
@@ -22,6 +23,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <Navbar />
           {children}
         </ThemeProvider>
       </body>
