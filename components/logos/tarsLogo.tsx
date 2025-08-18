@@ -1,6 +1,13 @@
 "use client";
 import { cn } from "@/lib/utils";
-import Link from "next/link";
+
+export default function TarsLogo({ className }: { className?: string }) {
+  return (
+    <div className={cn("w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center", className)}>
+      <span className="text-white font-bold text-sm">T</span>
+    </div>
+  );
+}
 
 interface TarsLogoProps {
   className?: string;

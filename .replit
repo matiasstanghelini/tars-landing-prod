@@ -24,6 +24,19 @@ mode = "sequential"
 task = "shell.exec"
 args = "npm run dev -- --hostname 0.0.0.0 --port 3000"
 
+[[workflows.workflow]]
+name = "Static Build"
+author = 42706880
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "npm run build"
+
 [[ports]]
 localPort = 3000
 externalPort = 80
+
+[deployment]
+run = ["sh", "-c", "npx serve out -s -l 3000"]
+build = ["sh", "-c", "npm run build"]
