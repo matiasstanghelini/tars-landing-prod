@@ -1,29 +1,20 @@
+
 "use client";
 import { cn } from "@/lib/utils";
-
-export default function TarsLogo({ className }: { className?: string }) {
-  return (
-    <div className={cn("w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center", className)}>
-      <span className="text-white font-bold text-sm">T</span>
-    </div>
-  );
-}
 
 interface TarsLogoProps {
   className?: string;
   size?: number;
   showText?: boolean;
   textClassName?: string;
-  href?: string;
 }
 
 export default function TarsLogo({
   className,
   size = 40,
-  href = "/",
 }: TarsLogoProps) {
   return (
-    <Link href={href} className={cn("flex items-center cursor-pointer hover:opacity-80 transition-opacity", className)}>
+    <div className={cn("flex items-center", className)}>
       <svg
         fill="#B61860"
         height={size}
@@ -50,6 +41,6 @@ export default function TarsLogo({
           </g>
         </g>
       </svg>
-    </Link>
+    </div>
   );
 }

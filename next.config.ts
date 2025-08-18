@@ -8,18 +8,13 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true
   },
-  // Configure allowed dev origins for Replit
-  experimental: {
-    allowedDevOrigins: [
-      '*.replit.dev',
-      '*.repl.co',
-      'localhost:3000'
-    ]
-  },
   // Disable server-side features not needed for static sites
   poweredByHeader: false,
   reactStrictMode: true,
-  swcMinify: true,
+  // Remove deprecated options that cause warnings
+  experimental: {
+    // Remove allowedDevOrigins - this is handled differently in Next.js 15
+  },
 };
 
 export default nextConfig;
