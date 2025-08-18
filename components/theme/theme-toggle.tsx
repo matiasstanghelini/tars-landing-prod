@@ -2,38 +2,17 @@
 "use client";
 
 import { Moon, Sun } from "lucide-react";
-import { useEffect, useState, useCallback } from "react";
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
 export function ThemeToggle() {
-  const [dark, setDark] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const { theme, setTheme } = useTheme();
 
-  // Efecto para leer el tema guardado al montar el componente
   useEffect(() => {
     setMounted(true);
-    if (typeof window !== 'undefined') {
-      const savedDark = localStorage.getItem('darkMode') === 'true';
-      const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      const isDark = savedDark !== null ? savedDark : systemDark;
-      
-      setDark(isDark);
-      document.documentElement.classList.toggle('dark', isDark);
-    }
   }, []);
 
-  // Efecto para guardar la preferencia y actualizar la clase
-  useEffect(() => {
-    if (mounted && typeof window !== 'undefined') {
-      localStorage.setItem('darkMode', dark.toString());
-      document.documentElement.classList.toggle('dark', dark);
-    }
-  }, [dark, mounted]);
-
-  const toggleTheme = useCallback(() => {
-    setDark(prev => !prev);
-  }, []);
-
-  // Evitar hidratación hasta que el componente esté montado
   if (!mounted) {
     return (
       <div className="flex items-center gap-2">
@@ -45,15 +24,15 @@ export function ThemeToggle() {
 
   return (
     <div className="flex items-center gap-2">
-      {dark ? (
+      {theme === "dark" ? (
         <Sun 
           className="w-5 h-5 text-yellow-400 cursor-pointer hover:scale-110 transition-transform" 
-          onClick={toggleTheme}
+          onClick={() => setTheme("light")}
         />
       ) : (
         <Moon 
           className="w-5 h-5 text-muted-foreground cursor-pointer hover:scale-110 transition-transform" 
-          onClick={toggleTheme}
+          onClick={() => setTheme("dark")}
         />
       )}
       <span className="sr-only">Toggle theme</span>
