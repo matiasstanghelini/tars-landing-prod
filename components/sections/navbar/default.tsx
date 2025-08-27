@@ -65,18 +65,18 @@ export default function Navbar({
 
   // Use translations for mobile links if not provided
   const defaultMobileLinks = [
-    { text: t('navbar.solutions'), href: "/solutions" },
-    { text: t('navbar.industries'), href: "/industrias" },
-    { text: t('navbar.resources'), href: "/resources" },
-    { text: t('navbar.blog'), href: "/resources/blog" },
-    { text: t('navbar.case_studies'), href: "/resources/casos-de-estudio" },
-    { text: t('navbar.about_us'), href: "/resources/sobre-nosotros" },
+    { text: t("navbar.solutions"), href: "/solutions" },
+    { text: t("navbar.industries"), href: "/industrias" },
+    { text: t("navbar.resources"), href: "/resources" },
+    { text: t("navbar.blog"), href: "/resources/blog" },
+    { text: t("navbar.case_studies"), href: "/resources/casos-de-estudio" },
+    { text: t("navbar.about_us"), href: "/resources/sobre-nosotros" },
   ];
 
   const defaultActions = [
     {
-      text: t('navbar.contact'),
-      href: "/contacto",
+      text: t("navbar.contact"),
+      href: "https://formbricks.tarsdevs.tech/s/cmehk0eiy000ipm01o5fyane7",
       isButton: true,
       variant: "default" as const,
     },
@@ -87,7 +87,7 @@ export default function Navbar({
 
   // Add contact link to mobile if enabled
   const mobileLinksWithContact = showContactInMobile
-    ? [...finalMobileLinks, { text: t('navbar.contact'), href: "/contacto" }]
+    ? [...finalMobileLinks, { text: t("navbar.contact"), href: "/contacto" }]
     : finalMobileLinks;
 
   return (
@@ -96,7 +96,10 @@ export default function Navbar({
       <div className="relative mx-auto">
         <NavbarComponent>
           <NavbarLeft>
-            <Link href={homeUrl} className="flex items-center gap-2 text-xl font-bold hover:opacity-80 transition-opacity">
+            <Link
+              href={homeUrl}
+              className="flex items-center gap-2 text-xl font-bold hover:opacity-80 transition-opacity"
+            >
               {logo}
               <span className={outfit.className}>{name}</span>
             </Link>
@@ -132,11 +135,7 @@ export default function Navbar({
               <ThemeToggle />
               <Sheet>
                 <SheetTrigger asChild>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className="shrink-0"
-                  >
+                  <Button variant="ghost" size="icon" className="shrink-0">
                     <Menu className="size-5" />
                     <span className="sr-only">Toggle navigation menu</span>
                   </Button>
