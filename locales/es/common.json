@@ -1,0 +1,61 @@
+{
+  "navbar": {
+    "solutions": "Soluciones",
+    "industries": "Industrias",
+    "resources": "Recursos",
+    "blog": "Blog",
+    "case_studies": "Casos de Estudio",
+    "about_us": "Sobre Nosotros",
+    "contact": "Contactanos",
+    "demo": "Demo"
+  },
+  "solutions": {
+    "title": "Soluciones",
+    "mvp": "MVP E-commerce",
+    "platform": "Plataforma E-commerce",
+    "analytics": "Analíticas",
+    "store_creation": "Creación de Tiendas",
+    "content_manager": "Gestor de Contenidos",
+    "marketplace": "Marketplace",
+    "ai_chatbot": "AI Chatbot"
+  },
+  "industries": {
+    "title": "Industrias",
+    "retail": "Retail",
+    "fashion": "Moda",
+    "manufacturing": "Manufactura",
+    "consumer_goods": "Bienes de Consumo"
+  },
+  "resources": {
+    "title": "Recursos",
+    "blog": "Blog",
+    "case_studies": "Casos de Estudio",
+    "documentation": "Documentación",
+    "about_us": "Sobre Nosotros"
+  },
+  "language": {
+    "spanish": "Español",
+    "english": "English",
+    "select_language": "Seleccionar idioma"
+  },
+  "blog": {
+    "title": "Blog",
+    "description": "Últimas noticias y actualizaciones"
+  },
+  "case_studies": {
+    "title": "Casos de Estudio",
+    "description": "Historias de éxito de nuestros clientes"
+  },
+  "about_us": {
+    "title": "Sobre Nosotros",
+    "description": "Conoce nuestro equipo y nuestra misión"
+  },
+  "contact": {
+    "title": "Contacto",
+    "description": "Ponte en contacto con nosotros"
+  },
+  "demo": {
+    "title": "Demo",
+    "description": "Prueba nuestras soluciones en acción"
+  }
+}

@@ -1,39 +1,38 @@
+
 "use client";
 
 import { Moon, Sun } from "lucide-react";
+import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
 export function ThemeToggle() {
-  const [dark, setDark] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const { theme, setTheme } = useTheme();
 
-  // Efecto para leer el tema guardado al montar el componente
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const savedDark = localStorage.getItem('darkMode') === 'true';
-      setDark(savedDark);
-      document.documentElement.classList.toggle('dark', savedDark);
-    }
+    setMounted(true);
   }, []);
 
-  // Efecto para guardar la preferencia y actualizar la clase
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('darkMode', dark.toString());
-      document.documentElement.classList.toggle('dark', dark);
-    }
-  }, [dark]);
+  if (!mounted) {
+    return (
+      <div className="flex items-center gap-2">
+        <div className="w-5 h-5" />
+        <span className="sr-only">Loading theme toggle</span>
+      </div>
+    );
+  }
 
   return (
     <div className="flex items-center gap-2">
-      {dark ? (
+      {theme === "dark" ? (
         <Sun 
-          className="w-5 h-5 text-yellow-400 cursor-pointer" 
-          onClick={() => setDark(false)}
+          className="w-5 h-5 text-yellow-400 cursor-pointer hover:scale-110 transition-transform" 
+          onClick={() => setTheme("light")}
         />
       ) : (
         <Moon 
-          className="w-5 h-5 text-muted-foreground cursor-pointer" 
-          onClick={() => setDark(true)}
+          className="w-5 h-5 text-muted-foreground cursor-pointer hover:scale-110 transition-transform" 
+          onClick={() => setTheme("dark")}
         />
       )}
       <span className="sr-only">Toggle theme</span>

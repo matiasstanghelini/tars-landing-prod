@@ -1,6 +1,8 @@
+
 import type { Metadata } from "next";
 import Navbar from "@/components/sections/navbar/default";
 import "./globals.css";
+import { ThemeProvider } from "next-themes";
 
 export const metadata: Metadata = {
   title: "Tars Tech - Soluciones digitales para pequeños y medianos comercios",
@@ -13,12 +15,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className="antialiased"
-      >
-        <Navbar/>
-        {children}
+    <html lang="es" suppressHydrationWarning>
+      <body className="antialiased" suppressHydrationWarning>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange={true}
+        >
+          <Navbar />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
