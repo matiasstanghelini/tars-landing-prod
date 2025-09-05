@@ -53,7 +53,7 @@ export default function Navigation({
   ],
   components = [
     // Soluciones
-    { title: "Plataforma E-commerce", href: "/solutions/platforma-ecommerce", description: "Solución integral para crear y gestionar tu tienda online.", category: "solutions" },
+    { title: "Plataforma E-commerce", href: "/solutions/platform-ecommerce", description: "Solución integral para crear y gestionar tu tienda online.", category: "solutions" },
     { title: "Creación de Tiendas", href: "/solutions/creacion-de-tiendas", description: "Creamos el contenido de tu tienda de forma sencilla.", category: "solutions" },
     { title: "Analíticas", href: "/solutions/analiticas", description: "Obtén reportes y métricas avanzadas de tu negocio.", category: "solutions" },
     { title: "MVP de E-commerce", href: "/solutions/mvp-ecommerce", description: "Solución para crear un MVP de e-commerce en el menor tiempo posible.", category: "solutions" },
@@ -74,7 +74,7 @@ export default function Navigation({
   logoDescription = "Soluciones de ecommerce para potenciar tu negocio, proveemos soluciones personalizadas para cada cliente, tanto para grandes empresas como para pequeños emprendedores.",
   logoHref = "/",
   introItems = [
-    { title: "Plataforma E-commerce", href: "/solutions/platforma-ecommerce", description: "Solución integral para crear y gestionar tu tienda online." },
+    { title: "Plataforma E-commerce", href: "/solutions/platform-ecommerce", description: "Solución integral para crear y gestionar tu tienda online." },
     { title: "Creación de Tiendas", href: "/solutions/creacion-de-tiendas", description: "Creamos el contenido de tu tienda de forma sencilla." },
     { title: "Analíticas", href: "/solutions/analiticas", description: "Obtén reportes y métricas avanzadas de tu negocio." },
   ],
