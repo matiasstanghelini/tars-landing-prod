@@ -17,7 +17,43 @@
     "store_creation": "Creación de Tiendas",
     "content_manager": "Gestor de Contenidos",
     "marketplace": "Marketplace",
-    "ai_chatbot": "AI Chatbot"
+    "ai_chatbot": "AI Chatbot",
+    "ai_chatbot_title": "AI Chatbot",
+    "ai_chatbot_subtitle": "Solución para crear chatbots para e-commerce.",
+    "ai_chatbot_description": "Implementa chatbots inteligentes que mejoren la experiencia de tus clientes y automaticen las ventas en tu tienda online.",
+    "platform_ecommerce": {
+      "title": "Plataforma E-commerce",
+      "subtitle": "Solución integral para crear y gestionar tu tienda online.",
+      "description": "Nuestra plataforma de comercio electrónico ofrece todo lo que necesitas para vender en línea de manera efectiva. Con herramientas intuitivas y potentes, podrás gestionar tu inventario, procesar pagos y analizar el rendimiento de tu tienda en un solo lugar.",
+      "features_title": "Características de la Plataforma E-commerce",
+      "items": {
+        "store": {
+          "title": "Tienda Online",
+          "description": "Gestión completa de productos y categorías"
+        },
+        "payments": {
+          "title": "Pagos Seguros",
+          "description": "Múltiples métodos de pago disponibles para integrar"
+        },
+        "inventory": {
+          "title": "Gestión de Inventario",
+          "description": "Control de stock en tiempo real"
+        },
+        "shipping": {
+          "title": "Envíos",
+          "description": "Integración con principales empresas de logística"
+        }
+      }
+    },
+    "store_creation_title": "Creación de Tiendas",
+    "store_creation_subtitle": "Creamos el contenido de tu tienda de forma sencilla.",
+    "store_creation_description": "Nuestro servicio de creación de tiendas te permite configurar tu e-commerce de manera rápida y eficiente. Nos encargamos de todo el proceso técnico para que puedas enfocarte en tu negocio.",
+    "mvp_ecommerce_title": "MVP de E-commerce",
+    "mvp_ecommerce_subtitle": "Solución para crear un MVP de e-commerce en el menor tiempo posible.",
+    "mvp_ecommerce_description": "Desarrolla tu producto mínimo viable de e-commerce de forma rápida y eficiente. Perfecto para validar tu idea de negocio en el mercado.",
+    "platform_description": "Una solución completa para gestionar tu tienda en línea con todas las herramientas necesarias.",
+    "digital_commerce_solutions": "Soluciones para Comercios Digitales",
+    "digital_commerce_solutions_description": "Herramientas y servicios para potenciar tu negocio en línea."
   },
   "industries": {
     "title": "Industrias",
@@ -31,7 +67,16 @@
     "blog": "Blog",
     "case_studies": "Casos de Estudio",
     "documentation": "Documentación",
-    "about_us": "Sobre Nosotros"
+    "about_us": "Sobre Nosotros",
+    "documentation_subtitle": "Guías de uso y documentación técnica.",
+    "available_guides": "Guías Disponibles",
+    "guides": [
+      "Configuración inicial de la plataforma",
+      "Gestión de productos",
+      "Configuración de pagos",
+      "Personalización del diseño",
+      "API y integraciones"
+    ]
   },
   "language": {
     "spanish": "Español",
@@ -57,5 +102,9 @@
   "demo": {
     "title": "Demo",
     "description": "Prueba nuestras soluciones en acción"
+  },
+  "home": {
+    "title": "Bienvenido a TARS Tech",
+    "subtitle": "Soluciones digitales para pequeños y medianos comercios."
   }
 }

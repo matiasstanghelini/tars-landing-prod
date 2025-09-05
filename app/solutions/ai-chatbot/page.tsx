@@ -9,15 +9,12 @@ export default function AIChatbotPage() {
   return (
     <div className="min-h-screen">
       <div className="container mx-auto px-4 py-8">
-        <h1 className="text-4xl font-bold mb-4">AI Chatbots para E-commerce</h1>
+        <h1 className="text-4xl font-bold mb-4">{t('solutions.ai_chatbot_title')}</h1>
         <p className="text-lg text-muted-foreground mb-8">
-          Solución para crear chatbots para e-commerce.
+          {t('solutions.ai_chatbot_subtitle')}
         </p>
         <div className="prose max-w-none">
-          <p>
-            Implementa chatbots inteligentes que mejoren la experiencia de tus clientes 
-            y automaticen las ventas en tu tienda online.
-          </p>
+          <p>{t('solutions.ai_chatbot_description')}</p>
         </div>
       </div>
     </div>

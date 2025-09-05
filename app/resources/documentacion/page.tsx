@@ -9,18 +9,18 @@ export default function DocumentacionPage() {
   return (
     <div className="min-h-screen">
       <div className="container mx-auto px-4 py-8">
-        <h1 className="text-4xl font-bold mb-4">Documentación</h1>
+        <h1 className="text-4xl font-bold mb-4">
+          {t('resources.documentation')}
+        </h1>
         <p className="text-lg text-muted-foreground mb-8">
-          Guías de uso y documentación técnica.
+          {t('resources.documentation_subtitle')}
         </p>
         <div className="prose max-w-none">
-          <h2>Guías Disponibles</h2>
+          <h2>{t('resources.available_guides')}</h2>
           <ul>
-            <li>Configuración inicial de la plataforma</li>
-            <li>Gestión de productos</li>
-            <li>Configuración de pagos</li>
-            <li>Personalización del diseño</li>
-            <li>API y integraciones</li>
+            {(t('resources.guides') as unknown as string[]).map((guide: string, index: number) => (
+              <li key={index}>{guide}</li>
+            ))}
           </ul>
         </div>
       </div>

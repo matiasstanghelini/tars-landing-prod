@@ -17,7 +17,42 @@
     "store_creation": "Store Creation",
     "content_manager": "Content Manager",
     "marketplace": "Marketplace",
-    "ai_chatbot": "AI Chatbot"
+    "ai_chatbot_title": "AI Chatbot",
+    "ai_chatbot_subtitle": "Solution for creating e-commerce chatbots.",
+    "ai_chatbot_description": "Implement intelligent chatbots that enhance your customers' experience and automate sales in your online store.",
+    "platform_ecommerce": {
+      "title": "E-commerce Platform",
+      "subtitle": "Comprehensive solution to create and manage your online store.",
+      "description": "Our e-commerce platform offers everything you need to sell online effectively. With intuitive and powerful tools, you'll be able to manage your inventory, process payments, and analyze your store's performance all in one place.",
+      "features_title": "E-commerce Platform Features",
+      "items": {
+        "store": {
+          "title": "Online Store",
+          "description": "Complete product and category management"
+        },
+        "payments": {
+          "title": "Secure Payments",
+          "description": "Multiple payment methods available for integration"
+        },
+        "inventory": {
+          "title": "Inventory Management",
+          "description": "Real-time stock control"
+        },
+        "shipping": {
+          "title": "Shipping",
+          "description": "Integration with major logistics companies"
+        }
+      }
+    },
+    "store_creation_title": "Store Creation",
+    "store_creation_subtitle": "We create your store content in a simple way.",
+    "store_creation_description": "Our store creation service allows you to set up your e-commerce quickly and efficiently. We take care of all the technical process so you can focus on your business.",
+    "mvp_ecommerce_title": "E-commerce MVP",
+    "mvp_ecommerce_subtitle": "Solution to create an e-commerce MVP in the shortest time possible.",
+    "mvp_ecommerce_description": "Develop your minimum viable e-commerce product quickly and efficiently. Perfect for validating your business idea in the market.",
+    "platform_description": "A complete solution to manage your online store with all the necessary tools.",
+    "digital_commerce_solutions": "Digital Commerce Solutions",
+    "digital_commerce_solutions_description": "Tools and services to boost your online business."
   },
   "industries": {
     "title": "Industries",
@@ -31,7 +66,16 @@
     "blog": "Blog",
     "case_studies": "Case Studies",
     "documentation": "Documentation",
-    "about_us": "About Us"
+    "about_us": "About Us",
+    "documentation_subtitle": "User guides and technical documentation.",
+    "available_guides": "Available Guides",
+    "guides": [
+      "Initial platform setup",
+      "Product management",
+      "Payment configuration",
+      "Design customization",
+      "API and integrations"
+    ]
   },
   "language": {
     "spanish": "Español",
@@ -57,5 +101,9 @@
   "demo": {
     "title": "Demo",
     "description": "Try our solutions in action"
+  },
+  "home": {
+    "title": "Welcome to TARS Tech",
+    "subtitle": "Digital solutions for small and medium-sized businesses."
   }
 }
