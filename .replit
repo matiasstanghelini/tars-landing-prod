@@ -22,7 +22,7 @@ mode = "sequential"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "npm run dev -- --hostname 0.0.0.0 --port 3000"
+args = "npm run dev -- --hostname 0.0.0.0 --port 5000"
 
 [[workflows.workflow]]
 name = "Static Build"
@@ -40,3 +40,6 @@ externalPort = 80
 [deployment]
 run = ["sh", "-c", "npx serve out -s -l 3000"]
 build = ["sh", "-c", "npm run build"]
+
+[agent]
+expertMode = true
