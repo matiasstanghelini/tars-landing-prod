@@ -154,7 +154,19 @@ export default function Orb({
     
     vec4 mainImage(vec2 fragCoord) {
       vec2 center = iResolution.xy * 0.5;
-      float size = min(iResolution.x, iResolution.y);
+      
+      // Make the orb scale responsively based on screen size
+      float minRes = min(iResolution.x, iResolution.y);
+      float maxRes = max(iResolution.x, iResolution.y);
+      
+      // Scale factor based on screen size - larger screens get bigger orbs
+      float scaleFactor = minRes / 500.0; // 500px as base reference
+      scaleFactor = clamp(scaleFactor, 0.3, 3.0); // Limit scaling between 30% and 300%
+      
+      // For very wide screens, use a blend between min and average dimension
+      float avgRes = (iResolution.x + iResolution.y) * 0.5;
+      float size = mix(minRes, avgRes, 0.3) * scaleFactor;
+      
       vec2 uv = (fragCoord - center) / size * 2.0;
       
       float angle = rot;
@@ -210,7 +222,13 @@ export default function Orb({
       renderer.setSize(width * dpr, height * dpr);
       gl.canvas.style.width = width + 'px';
       gl.canvas.style.height = height + 'px';
-      program.uniforms.iResolution.value.set(gl.canvas.width, gl.canvas.height, gl.canvas.width / gl.canvas.height);
+      
+      // Calculate responsive size based on viewport dimensions
+      const minDimension = Math.min(width, height);
+      const maxDimension = Math.max(width, height);
+      const aspectRatio = width / height;
+      
+      program.uniforms.iResolution.value.set(gl.canvas.width, gl.canvas.height, aspectRatio);
     }
     window.addEventListener('resize', resize);
     resize();
@@ -226,13 +244,22 @@ export default function Orb({
       const y = e.clientY - rect.top;
       const width = rect.width;
       const height = rect.height;
-      const size = Math.min(width, height);
+      
+      // Calculate responsive size for interaction area
+      const minDimension = Math.min(width, height);
+      const avgDimension = (width + height) * 0.5;
+      const scaleFactor = Math.max(0.3, Math.min(3.0, minDimension / 500.0));
+      const size = avgDimension * 0.65 * scaleFactor; // Mix of min and avg for better interaction
+      
       const centerX = width / 2;
       const centerY = height / 2;
       const uvX = ((x - centerX) / size) * 2.0;
       const uvY = ((y - centerY) / size) * 2.0;
 
-      if (Math.sqrt(uvX * uvX + uvY * uvY) < 0.8) {
+      // Adjust interaction radius based on screen size
+      const interactionRadius = Math.max(0.6, Math.min(1.2, 0.8 * scaleFactor));
+      
+      if (Math.sqrt(uvX * uvX + uvY * uvY) < interactionRadius) {
         targetHover = 1;
       } else {
         targetHover = 0;
