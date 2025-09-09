@@ -8,7 +8,7 @@ export default function Home() {
   const { t } = useTranslation();
 
   return (
-    <div className="relative w-full h-screen flex items-center justify-center overflow-hidden">
+    <div className="relative w-full h-[calc(100vh-64px)] flex items-center justify-center overflow-hidden">
       {/* Orb Background */}
       <div className="absolute inset-0 w-full h-full">
         <Orb
