@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" suppressHydrationWarning>
-      <body className="antialiased" suppressHydrationWarning>
+      <body className="antialiased overflow-hidden" suppressHydrationWarning>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -24,7 +24,9 @@ export default function RootLayout({
           disableTransitionOnChange={true}
         >
           <Navbar />
-          {children}
+          <main className="overflow-hidden">
+            {children}
+          </main>
         </ThemeProvider>
       </body>
     </html>
