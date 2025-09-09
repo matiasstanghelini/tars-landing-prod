@@ -33,13 +33,13 @@ mode = "sequential"
 task = "shell.exec"
 args = "npm run build"
 
-[[ports]]
-localPort = 3000
-externalPort = 80
-
 [deployment]
 run = ["sh", "-c", "npx serve out -s -l 3000"]
 build = ["sh", "-c", "npm run build"]
 
 [agent]
 expertMode = true
+
+[[ports]]
+localPort = 5000
+externalPort = 80

@@ -18,24 +18,19 @@ export default function Home() {
           forceHoverState={false}
         />
       </div>
-      
+
       {/* Text Content - Centered and on top of the Orb */}
       <div className="relative z-10 w-full max-w-4xl px-4 text-center">
         <h1 className="text-5xl font-bold drop-shadow-lg mb-6">
           <TextType
-            text={[
-              t("home.title"),
-              t("home.subtitle")
-            ]}
+            text={[t("home.title"), t("home.subtitle")]}
             typingSpeed={85}
             pauseDuration={1500}
             showCursor={true}
             cursorCharacter="|"
           />
         </h1>
-        <p className="text-xl mt-4">
-          {t("home.subtitle")}
-        </p>
+        <p className="text-xl mt-4">{t("home.subtitle")}</p>
       </div>
     </div>
   );
