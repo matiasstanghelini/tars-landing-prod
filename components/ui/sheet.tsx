@@ -1,6 +1,7 @@
 "use client";
 
 import * as SheetPrimitive from "@radix-ui/react-dialog";
+import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { Cross2Icon } from "@radix-ui/react-icons";
 import { cva, type VariantProps } from "class-variance-authority";
 import * as React from "react";
@@ -68,6 +69,9 @@ function SheetContent({
         className={cn(sheetVariants({ side }), className)}
         {...props}
       >
+        <VisuallyHidden.Root asChild>
+          <SheetPrimitive.Title>Sheet</SheetPrimitive.Title>
+        </VisuallyHidden.Root>
         <SheetPrimitive.Close className="ring-offset-background focus:ring-ring data-[state=open]:bg-secondary absolute top-6 right-6 rounded-sm opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none">
           <Cross2Icon className="size-5" />
           <span className="sr-only">Close</span>
