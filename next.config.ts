@@ -11,6 +11,8 @@ const nextConfig: NextConfig = {
   // Disable server-side features not needed for static sites
   poweredByHeader: false,
   reactStrictMode: true,
+  // Transpile packages that don't support ESM properly
+  transpilePackages: ['ogl', 'gsap'],
   // Remove deprecated options that cause warnings
   experimental: {
     // Remove allowedDevOrigins - this is handled differently in Next.js 15
